@@ -2,29 +2,66 @@
 const axios = require('axios');
 
 
+// Recursive function to fetch book content
+const fetchBookContent = async (id, currentPartNo) => {
+    try {
+        // Fetch content for the current part
+        const response = await axios.get(`https://www.wattpad.com/apiv2/?m=storytext&id=${id}&page=${currentPartNo}`);
+
+        // If content is available, accumulate it
+        if (response && response.data) {
+            return response.data;
+        } else {
+            // No content found, return null to stop further fetching
+            return null;
+        }
+    } catch (error) {
+        // If there's an error fetching the page, return null to indicate failure
+        console.error(`Error fetching Book ID: ${id}, Page: ${currentPartNo}`, error);
+        return null;
+    }
+};
+
+// Main function to get all books
+// Main function to get all books
 const getAllBooks = async (req, res) => {
     try {
-        // Assuming the request body contains an array of books
-        const booksArray = req.body;
-        let books = ''; // constiable to accumulate the response data
+        const booksArray = req.body; // Array of books
+        let allBooks = ''; // Concatenate all books' content as a single string
 
+        // Loop through each book in the array
         for (let i = 0; i < booksArray.length; i++) {
             const book = booksArray[i];
-            const { bookId, pageNo } = book;
+            const { id, partNo } = book;
 
-            try {
-                const response = await axios.get(`https://www.wattpad.com/apiv2/?m=storytext&id=${bookId}&page=${pageNo}`);
-                if (response && response.data) {
-                    books += response.data; // Concatenate book content directly without extra new lines
+            let bookContent = ''; // Variable to accumulate content for the current book
+            let currentPartNo = partNo; // Start with the given partNo
+            let partAvailable = true; // Flag to check if parts are available
+
+            // Fetch content recursively for the current book
+            while (partAvailable) {
+                const content = await fetchBookContent(id, currentPartNo);
+
+                if (content) {
+                    // If content is found, accumulate it
+                    bookContent += content;
+                    currentPartNo++; // Move to the next part
                 } else {
-                    books += `Book ID: ${bookId}, Page: ${pageNo} - Page not found`; // In case the page is not found
+                    // If no content is found for this part, stop fetching this book
+                    console.log(`No data found for Book ID: ${id}, Page: ${currentPartNo}. Moving to next book.`);
+                    partAvailable = false; // Exit the loop for this book
                 }
-            } catch (error) {
-                books += `Book ID: ${bookId}, Page: ${pageNo} - Error fetching data`; // Error handling for each book
+            }
+
+            // If we have valid content for the book, concatenate it to the result
+            if (bookContent) {
+                allBooks += bookContent;
             }
         }
 
-        res.status(200).json({ books }); // Return the concatenated books data
+        // Send back the concatenated result
+        res.send({ status: 200, books: allBooks });
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
