@@ -8,7 +8,7 @@ const port = 3000;
 
 // Enable CORS for all routes with preflight support
 app.use(cors({
-    origin: 'http://localhost:4200',  // Allow your frontend domain
+    origin: 'https://popcopy.w3spaces.com/',  // Allow your frontend domain
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow necessary methods, including OPTIONS
     allowedHeaders: ['Content-Type', 'Authorization']  // Allow the headers your frontend might use
 }));
