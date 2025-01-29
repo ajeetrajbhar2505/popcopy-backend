@@ -28,6 +28,7 @@ const fetchBookContent = async (id, currentPartNo) => {
 function formatResponse(response) {
     // Replace **text** with <b>text</b>
     let formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+     formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
 
     // Replace \n with <br>
     formattedResponse = formattedResponse.replace(/\n/g, '<br>');
@@ -66,7 +67,10 @@ const getAllBooks = async (req, res) => {
             let bookContent = ''; // Variable to accumulate content for the current book
             let currentPartNo = partNo; // Start with the given partNo
             let partAvailable = true; // Flag to check if parts are available
-
+            if (id == '497114295') {
+                var a = 3
+            }
+            // 497114295
             // Fetch content recursively for the current book
             while (partAvailable) {
                 try {
@@ -124,6 +128,7 @@ const removeHtmlTags = (input) => {
     try {
         // First, remove all text inside <i> tags
         input = input.replace(/<i.*?>(.*?)<\/i>/g, "");
+        input = input.replace(/<b.*?>(.*?)<\/b>/g, "");
         // Then, remove all HTML tags
         return input.replace(/<\/?[^>]+(>|$)/g, "");
     } catch (error) {
