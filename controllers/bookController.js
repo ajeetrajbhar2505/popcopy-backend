@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI('AIzaSyCvU1YQebIBYmcoFg06nN4SC_fd2x3u8tI');
+const genAI = new GoogleGenerativeAI('AIzaSyBTEpkolgzAt_UiI2QdRdI9Tjjh6ncsM_8');
 
 
 // Recursive function to fetch book content
