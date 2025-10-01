@@ -19,7 +19,7 @@ const fetchBookContent = async (id, currentPartNo) => {
         }
     } catch (error) {
         // If there's an error fetching the page, return null to indicate failure
-        console.error(`Error fetching Book ID: ${id}, Page: ${currentPartNo}`, error);
+        // console.error(`Error fetching Book ID: ${id}, Page: ${currentPartNo}`, error);
         return null;
     }
 };
@@ -83,11 +83,11 @@ const getAllBooks = async (req, res) => {
                         currentPartNo++; // Move to the next part
                     } else {
                         // If no content is found for this part, stop fetching this book
-                        console.log(`No data found for Book ID: ${id}, Part: ${currentPartNo}. Moving to next book.`);
+                        // console.log(`No data found for Book ID: ${id}, Part: ${currentPartNo}. Moving to next book.`);
                         partAvailable = false; // Exit the loop for this book
                     }
                 } catch (err) {
-                    console.error(`Error fetching content for Book ID: ${id}, Part: ${currentPartNo}:`, err);
+                    // console.error(`Error fetching content for Book ID: ${id}, Part: ${currentPartNo}:`, err);
                     partAvailable = false; // Stop on error
                 }
             }
