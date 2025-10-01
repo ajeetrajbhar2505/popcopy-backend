@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'kdeditor')));
+app.use(express.static(path.join(__dirname, 'kdeditor/assets')));
 
 // Use the book routes
 app.use('/api', bookRoutes);
