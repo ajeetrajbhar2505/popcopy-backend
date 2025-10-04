@@ -24,14 +24,14 @@ const fetchBookContent = async (id, currentPartNo) => {
     }
 };
 
-
 function formatResponse(response) {
     // Replace **text** with <b>text</b>
     let formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-     formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
 
     // Replace \n with <br>
-    formattedResponse = formattedResponse.replace(/\n/g, '<br>');
+    formattedResponse = response.replace(/\n/g, '<br>');
+
+    // Remove single asterisks
     formattedResponse = formattedResponse.replace(/\*/g, '');
 
     return formattedResponse;
@@ -126,10 +126,7 @@ const getAllBooks = async (req, res) => {
 
 const removeHtmlTags = (input) => {
     try {
-        // First, remove all text inside <i> tags
-        input = input.replace(/<i.*?>(.*?)<\/i>/g, "");
-        input = input.replace(/<b.*?>(.*?)<\/b>/g, "");
-        // Then, remove all HTML tags
+        // Remove HTML tags but preserve the content inside them
         return input.replace(/<\/?[^>]+(>|$)/g, "");
     } catch (error) {
         return input;
