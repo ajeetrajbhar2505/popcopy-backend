@@ -62,7 +62,7 @@ const getAllBooks = async (req, res) => {
         // Loop through each book in the array
         for (let i = 0; i < booksArray.length; i++) {
             const book = booksArray[i];
-            const { id, partNo } = book;
+            const { id, partNo,chapterName } = book;
 
             let bookContent = ''; // Variable to accumulate content for the current book
             let currentPartNo = partNo; // Start with the given partNo
@@ -109,7 +109,7 @@ const getAllBooks = async (req, res) => {
 
             // If we have valid content for the book, add it to the final result
             if (bookContent) {
-                allBooks += bookContent; // Add content into the accumulated string
+                allBooks +=  `\nChapter Name  : ${chapterName} -  Chapter begins \n` + bookContent; // Add content into the accumulated string
             }
         }
 
