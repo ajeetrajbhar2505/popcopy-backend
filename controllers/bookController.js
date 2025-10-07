@@ -115,7 +115,7 @@ const getAllBooks = async (req, res) => {
         }
 
         // Send the accumulated content for all books as a response
-        const cleaned = await cleanFanfictionText(allBooks);
+        // const cleaned = await cleanFanfictionText(allBooks);
         res.status(200).send({ books: allBooks }); // Use res.status(200) directly
 
     } catch (error) {
