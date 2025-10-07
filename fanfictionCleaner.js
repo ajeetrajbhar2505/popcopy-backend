@@ -91,7 +91,7 @@ async function cleanFanfictionText(inputText) {
       const retryCleanedText = await openaiCleanText(maskedText);
       
       if (isBlockedResponse(retryCleanedText)) {
-        throw new Error("Content could not be cleaned due to policy restrictions");
+        return cleanedText
       }
       
       console.log(`✅ Cleaned with masking. Before: ${inputText.split(/\s+/).length} words After: ${retryCleanedText.split(/\s+/).length} words`);
