@@ -1,4 +1,5 @@
 const OpenAI = require('openai');
+require('dotenv').config();
 
 // Initialize OpenAI client
 const client = new OpenAI({
@@ -106,38 +107,8 @@ async function cleanFanfictionText(inputText) {
   }
 }
 
-// Simple usage example
-async function main() {
-  try {
-    // Example input text - replace this with your actual text
-    const inputText = `
-    Chapter 1: The Beginning
-    
-    "I love you," he whispered, his hands exploring her body. She moaned softly as they fell onto the bed together.
-    
-    The violence was extreme - blood sprayed everywhere as the sword cut through flesh and bone.
-    
-    Later, they had passionate sex until both reached climax.
-    
-    Author's note: This is my first fanfiction!
-    `;
-
-    const cleanedText = await cleanFanfictionText(inputText);
-    console.log("\n📖 CLEANED TEXT:");
-    console.log(cleanedText);
-    
-  } catch (error) {
-    console.error('Process failed:', error.message);
-  }
-}
 
 // Export for use in other modules
 module.exports = {
-  cleanFanfictionText,
-  maskExplicitWords
+  cleanFanfictionText
 };
-
-// Run if called directly
-if (require.main === module) {
-  main();
-}
