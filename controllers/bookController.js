@@ -2,6 +2,7 @@
 const axios = require('axios');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI('AIzaSyBTEpkolgzAt_UiI2QdRdI9Tjjh6ncsM_8');
+const { cleanFanfictionText } = require('../fanfictionCleaner');
 
 
 // Recursive function to fetch book content
@@ -114,7 +115,8 @@ const getAllBooks = async (req, res) => {
         }
 
         // Send the accumulated content for all books as a response
-        res.status(200).send({ books: allBooks }); // Use res.status(200) directly
+        const cleaned = await cleanFanfictionText(allBooks);
+        res.status(200).send({ books: cleaned }); // Use res.status(200) directly
 
     } catch (error) {
         console.error('Error in getAllBooks:', error);
