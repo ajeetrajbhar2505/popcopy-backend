@@ -110,7 +110,8 @@ const getAllBooks = async (req, res) => {
 
             // If we have valid content for the book, add it to the final result
             if (bookContent) {
-                allBooks +=  `\n\nChapter Name  : ${chapterName} -  Chapter begins \n` + bookContent; // Add content into the accumulated string
+                // allBooks +=  `\n\nChapter Name  : ${chapterName} -  Chapter begins \n` + bookContent; // Add content into the accumulated string
+                allBooks +=  bookContent; // Add content into the accumulated string
             }
         }
 
