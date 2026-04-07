@@ -3,7 +3,7 @@ require('dotenv').config();
 
 // Initialize OpenAI client
 const client = new OpenAI({
-  apiKey: 'AIzaSyAdEkw1T_Bm1SfBW1esztwV-bqXQnEhPzQ'
+  apiKey: process.env.v2
 });
 
 const BANNED_WORDS = [

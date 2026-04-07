@@ -1,7 +1,9 @@
 
+require('dotenv').config();
+
 const axios = require('axios');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI('AIzaSyAdEkw1T_Bm1SfBW1esztwV-bqXQnEhPzQ');
+const genAI = new GoogleGenerativeAI(process.env.v1);
 const { cleanFanfictionText } = require('../fanfictionCleaner');
 
 
