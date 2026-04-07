@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI('AIzaSyBTEpkolgzAt_UiI2QdRdI9Tjjh6ncsM_8');
+const genAI = new GoogleGenerativeAI('AIzaSyAdEkw1T_Bm1SfBW1esztwV-bqXQnEhPzQ');
 const { cleanFanfictionText } = require('../fanfictionCleaner');
 
 
