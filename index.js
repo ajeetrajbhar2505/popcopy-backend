@@ -1,29 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const bookRoutes = require('./routes/bookRoutes'); // Import the routes
-const path = require('path'); // Add this line
+const { chromium } = require('playwright');
 
-const app = express();
-const port = 3000;
+(async () => {
+  const browser = await chromium.launch({
+    headless: false   // 👈 THIS IS IMPORTANT
+  });
 
-// Enable CORS for all routes with preflight support
-app.use(cors({
-    origin: '*'  // This allows requests from any origin
-  }));
-  
-// Middleware to parse JSON bodies
-app.use(bodyParser.json());
+  const page = await browser.newPage();
 
-// Middleware to parse URL-encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));
+  await page.goto('https://www.wattpad.com/login');
 
-app.use(express.static(path.join(__dirname, 'kdeditor')));
-app.use(express.static(path.join(__dirname, 'kdeditor/assets')));
+  // wait so you can login manually
+  await page.waitForTimeout(60000); // 60 sec
 
-// Use the book routes
-app.use('/api', bookRoutes);
+  await page.goto('https://www.wattpad.com/story/183675558-izuku-likes-you-izuku-x-reader');
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+  console.log(await page.content());
+
+  await browser.close();
+})();
