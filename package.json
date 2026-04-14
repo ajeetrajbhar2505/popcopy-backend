@@ -6,7 +6,7 @@
   "scripts": {
     "i": "hii",
     "start": "nodemon index.js",
-    "postinstall": "npm audit fix --force && npm cache clean --force && npx playwright install --force && node -v && npm version",
+    "postinstall": "PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 npx playwright install chromium",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ajit",
