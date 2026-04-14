@@ -1,23 +1,31 @@
-// login.js
-const { chromium } = require('playwright');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const bookRoutes = require('./routes/bookRoutes'); // Import the routes
+const wattpadRoutes = require('./routes/wattpadRoutes');
+const path = require('path'); // Add this line
 
-(async () => {
-  const browser = await chromium.launch({
-    headless: false // 👈 allows manual login
-  });
+const app = express();
+const port = 3000;
 
-  const context = await browser.newContext();
-  const page = await context.newPage();
+// Enable CORS for all routes with preflight support
+app.use(cors({
+    origin: '*'  // This allows requests from any origin
+  }));
+  
+// Middleware to parse JSON bodies
+app.use(bodyParser.json());
 
-  await page.goto('https://www.wattpad.com/login');
+// Middleware to parse URL-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  console.log('👉 Login manually within 60 seconds...');
-  await page.waitForTimeout(60000);
+app.use(express.static(path.join(__dirname, 'kdeditor')));
+app.use(express.static(path.join(__dirname, 'kdeditor/assets')));
 
-  // ✅ Save session
-  await context.storageState({ path: 'state.json' });
+// Use the book routes
+app.use('/api', bookRoutes);
+app.use('/api', wattpadRoutes);
 
-  console.log('✅ Session saved to state.json');
-
-  await browser.close();
-})();
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
