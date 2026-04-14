@@ -1,6 +1,8 @@
+require('dotenv').config();
 const axios = require('axios');
 const { CookieJar } = require('tough-cookie');
 const { wrapper } = require('axios-cookiejar-support');
+
 
 // Create cookie jar outside function to maintain session across calls
 const cookieJar = new CookieJar();
@@ -30,8 +32,8 @@ exports.scrapeStory = async (req, res) => {
     
     // API Call 1: Login
     const loginResponse = await client.post('https://www.wattpad.com/login?nextUrl=%2Fhome', {
-      username: "ajit2504",
-      password: "Ajeet@189808"
+      username: process.env.WATTPAD_USERNAME,
+      password: process.env.WATTPAD_PASSWORD
     });
     
     console.log("Login Status:", loginResponse.status);
