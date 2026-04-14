@@ -15,13 +15,10 @@ exports.scrapeStory = async (req, res) => {
 
     // ✅ Launch visible browser
     browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu'
-      ]
+      headless: false,
+      channel: 'chrome', // ✅ THIS FIXES GOOGLE BLOCK
+      args: ['--no-sandbox'],
+      slowMo: 50
     });
 
     // ✅ Load session if exists
