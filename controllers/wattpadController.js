@@ -1,87 +1,84 @@
-const { chromium } = require('playwright');
-const fs = require('fs');
+const axios = require('axios');
+const { CookieJar } = require('tough-cookie');
+const { wrapper } = require('axios-cookiejar-support');
+
+// Create cookie jar outside function to maintain session across calls
+const cookieJar = new CookieJar();
+const client = wrapper(axios.create({ 
+  jar: cookieJar,
+  withCredentials: true,
+  maxRedirects: 5,
+  validateStatus: function (status) {
+    return status >= 200 && status < 400;
+  }
+}));
 
 exports.scrapeStory = async (req, res) => {
-  let browser;
-
   try {
-    const url = req.query.url;
 
-    if (!url) {
+    
+    if (!req.query.url) {
       return res.status(400).json({
-        error: 'Story URL is required (?url=...)'
+        success: false,
+        message: "url are required"
       });
     }
 
-    // ✅ Launch visible browser
-    browser = await chromium.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"]
+    const url=  req.query.url;
+    
+    console.log("Step 1: Logging in to Wattpad...");
+    
+    // API Call 1: Login
+    const loginResponse = await client.post('https://www.wattpad.com/login?nextUrl=%2Fhome', {
+      username: "ajit2504",
+      password: "Ajeet@189808"
     });
-
-    // ✅ Load session if exists
-    const context = fs.existsSync('state.json')
-      ? await browser.newContext({ storageState: 'state.json' })
-      : await browser.newContext();
-
-    const page = await context.newPage();
-
-    // ===============================
-    // 🔐 LOGIN FLOW (ONLY FIRST TIME)
-    // ===============================
-    if (!fs.existsSync('state.json')) {
-      console.log('👉 Opening login page...');
-
-      await page.goto('https://www.wattpad.com/login');
-
-      // 👉 Click Google login button + handle popup
-      const [popup] = await Promise.all([
-        context.waitForEvent('page'),
-        page.click('button.btn-google')
-      ]);
-
-      console.log('👉 Complete Google login in popup...');
-
-      await popup.waitForLoadState();
-
-      // Wait until popup closes (user finishes login)
-      await page.waitForTimeout(60000); // 60 sec
-
-      console.log('✅ Login completed');
-
-      // Save session
-      await context.storageState({ path: 'state.json' });
-      console.log('✅ Session saved!');
-    }
-
-    // ===============================
-    // 📖 SCRAPE STORY
-    // ===============================
-    console.log('📖 Opening story...');
-
-    await page.goto(url, { waitUntil: 'networkidle' });
-
-    // Optional: ensure logged in
-    const isLoggedIn = await page.evaluate(() => {
-      return !document.body.innerText.includes('Log in');
+    
+    console.log("Login Status:", loginResponse.status);
+    
+    // API Call 2: Verify user (genre page)
+    console.log("Step 2: Verifying user...");
+    const verifyResponse = await client.get('https://www.wattpad.com/start/genres', {
+      params: {
+        nexturl: '/home',
+        platform: 'email',
+        type: 'login'
+      }
     });
+    
+    console.log("Verify Status:", verifyResponse.status);
+    
+    // API Call 3: Access home page to confirm session
+    console.log("Step 3: Accessing home page...");
+    const homeResponse = await client.get(url);
+    
+    console.log("Home Status:", homeResponse.status);
+    
 
-    if (!isLoggedIn) {
-      throw new Error('Still not logged in. Delete state.json and try again.');
-    }
-
-    // Get HTML
-    const html = await page.content();
-
-    await browser.close();
-
-    return res.send(html);
-
-  } catch (err) {
-    if (browser) await browser.close();
-
+    // Success response
+    return res.status(200).json({
+      success: true,
+      message: "Successfully logged in and accessed Wattpad",
+      data: {
+        loginStatus: loginResponse.status,
+        verifyStatus: verifyResponse.status,
+        homeStatus: homeResponse.status,
+        story: homeResponse.data,
+        cookies: await cookieJar.getCookieStringSync('https://www.wattpad.com')
+      }
+    });
+    
+  } catch (error) {
+    console.error("Error in scrapeStory:", error.message);
+    
     return res.status(500).json({
-      error: err.message
+      success: false,
+      message: "Failed to scrape story",
+      error: error.message,
+      details: error.response ? {
+        status: error.response.status,
+        data: error.response.data
+      } : null
     });
   }
 };
