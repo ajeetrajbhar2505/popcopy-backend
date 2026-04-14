@@ -15,7 +15,7 @@ exports.scrapeStory = async (req, res) => {
 
     // ✅ Launch visible browser
     browser = await chromium.launch({
-      headless: false,
+      headless: true,
       channel: 'chrome', // ✅ THIS FIXES GOOGLE BLOCK
       args: ['--no-sandbox'],
       slowMo: 50
