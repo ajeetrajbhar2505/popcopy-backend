@@ -6,7 +6,7 @@
   "scripts": {
     "i": "hii",
     "start": "npm run postinstall &&  nodemon index.js",
-    "postinstall": "npx playwright install --with-deps",
+    "postinstall": "npx playwright install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ajit",
