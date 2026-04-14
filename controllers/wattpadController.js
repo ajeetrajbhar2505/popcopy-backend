@@ -4,26 +4,7 @@ const fs = require('fs');
 // 🔐 LOGIN CONTROLLER
 exports.login = async (req, res) => {
   try {
-    const browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-
-    const context = await browser.newContext();
-    const page = await context.newPage();
-
-    await page.goto('https://www.wattpad.com/login');
-
-    await page.waitForTimeout(5000);
-
-    await context.storageState({ path: 'state.json' });
-
-    await browser.close();
-
-    res.json({
-      success: true,
-      message: 'Session saved successfully'
-    });
+    const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }); const context = await browser.newContext(); const page = await context.newPage(); await page.goto('https://www.wattpad.com/login');; await page.waitForTimeout(5000); await context.storageState({ path: 'state.json' }); await browser.close(); res.json({ success: true, message: 'Logged in and session saved' });
 
   } catch (err) {
     res.status(500).json({ error: err.message });
