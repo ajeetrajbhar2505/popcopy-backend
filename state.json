@@ -1,0 +1,473 @@
+{
+  "cookies": [
+    {
+      "name": "wp_id",
+      "value": "4a5ab4f7-feb1-45ad-99f9-fcabe97cd443",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1810713334.677767,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sn__time",
+      "value": "j%3Anull",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1776155134.679235,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "fs__exp",
+      "value": "1",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1810713334.679304,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "adMetrics",
+      "value": "0",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1791921334.67936,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "wp-web-auth-cache-bust",
+      "value": "0",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1791921334.679414,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_pbeb_",
+      "value": "1",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1791921334.679509,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_afp25f_",
+      "value": "0",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1791921334.679558,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ul_1",
+      "value": "0",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1791921334.67961,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lang",
+      "value": "1",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1781337334.679664,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "locale",
+      "value": "en_US",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1781337334.679699,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ff",
+      "value": "1",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1807689335,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "dpr",
+      "value": "1",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1807689335,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "tz",
+      "value": "-5.5",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1807689335,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "X-Time-Zone",
+      "value": "Asia%2FCalcutta",
+      "domain": "www.wattpad.com",
+      "path": "/",
+      "expires": 1807689335,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "RT",
+      "value": "",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1776153935,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "te_session_id",
+      "value": "1776153335533",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "CMID",
+      "value": "ad3y924sBzMAMu2yBHuezgAA",
+      "domain": ".casalemedia.com",
+      "path": "/",
+      "expires": 1807689337.128354,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "CMPS",
+      "value": "5540",
+      "domain": ".casalemedia.com",
+      "path": "/",
+      "expires": 1783929335.712284,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "CMPRO",
+      "value": "5540",
+      "domain": ".casalemedia.com",
+      "path": "/",
+      "expires": 1783929337.128389,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_col_uuid",
+      "value": "0de41a3f-c96b-4f92-a338-b3e849ba30c7-61i0",
+      "domain": ".clmbtech.com",
+      "path": "/",
+      "expires": 1810713335.731365,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_col_uuid",
+      "value": "0de41a3f-c96b-4f92-a338-b3e849ba30c7-61i0",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1810713335.736576,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "UID",
+      "value": "1D35eed3c01036a1fc9318d1776153335",
+      "domain": ".scorecardresearch.com",
+      "path": "/",
+      "expires": 1809849335.793702,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "XID",
+      "value": "1D35eed3c01036a1fc9318d1776153335",
+      "domain": ".scorecardresearch.com",
+      "path": "/",
+      "expires": 1809849335.793762,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://wattpad.com",
+      "_crHasCrossSiteAncestor": true
+    },
+    {
+      "name": "_ga_FNDTZ0MZDQ",
+      "value": "GS2.1.s1776153335$o1$g0$t1776153335$j60$l0$h0",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1810713335.920025,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AMP_TOKEN",
+      "value": "%24NOT_FOUND",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1776156935,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.2.1278837774.1776153336",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1810713335.98841,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.612936759.1776153336",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1776239735,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "TDID",
+      "value": "b6a9d3a0-9917-46c6-8e6a-78cd36203ebd",
+      "domain": ".adsrvr.org",
+      "path": "/",
+      "expires": 1807689336.211825,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "IDE",
+      "value": "AHWqTUkbOz8ZP3jgGn6gGiRwWtyNIcRypBleZQVPgl_w2l3JJM4ht5uVp_UIwYctHlU",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1810713336.146987,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "TDCPM",
+      "value": "CAESFQoGY2FzYWxlEgsIjuy566eBjT8QBRgFIAEoAjILCN6o25e-gY0_EAU4AQ..",
+      "domain": ".adsrvr.org",
+      "path": "/",
+      "expires": 1807689336.211896,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "uid",
+      "value": "4336468721773890911",
+      "domain": ".turn.com",
+      "path": "/",
+      "expires": 1791705337.221978,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_knxq_",
+      "value": "e8b892bd-0cdc-64d5-baedc36c.1776153336.0.1776153336.1776153336",
+      "domain": ".brand-display.com",
+      "path": "/",
+      "expires": 1810713336.375036,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "A3",
+      "value": "d=AQABBPjy3WkCEP8G_76YwWnYKnvWKak8wmwFEgEBAQFE32nnaVkWyyMA_eMDAA&S=AQAAAsn4YsmpFEiQSv_VzASHArI",
+      "domain": ".yahoo.com",
+      "path": "/",
+      "expires": 1807710936.929968,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "azk",
+      "value": "ue1-227a5498c6a843668106ef5cac86ee03",
+      "domain": "e-9660.adzerk.net",
+      "path": "/",
+      "expires": 1807689336.747918,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "azk-ss",
+      "value": "true",
+      "domain": "e-9660.adzerk.net",
+      "path": "/",
+      "expires": 1807689336.748022,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "IDSYNC",
+      "value": "19gq~2vdj",
+      "domain": ".analytics.yahoo.com",
+      "path": "/",
+      "expires": 1807689336.929896,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sa-user-id",
+      "value": "s%3A0-f88ad3c7-30ed-5e0e-4915-be2ad1f529cb.Q0hAaQ0adxigh5DoCJ8jCbPEc%2Fki%2BvLG%2F3E5cMBb7Yo",
+      "domain": "sync.srv.stackadapt.com",
+      "path": "/",
+      "expires": 1807689336.944545,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sa-user-id",
+      "value": "s%3A0-f88ad3c7-30ed-5e0e-4915-be2ad1f529cb.Q0hAaQ0adxigh5DoCJ8jCbPEc%2Fki%2BvLG%2F3E5cMBb7Yo",
+      "domain": ".srv.stackadapt.com",
+      "path": "/",
+      "expires": 1807689336.944631,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sa-user-id-v2",
+      "value": "s%3A-IrTxzDtXg5JFb4q0fUpy2f9ypY.IGC8oOqPeGjXttEiPHI8n7C06i%2BL1ivbels3ouLxCkY",
+      "domain": "sync.srv.stackadapt.com",
+      "path": "/",
+      "expires": 1807689336.944671,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sa-user-id-v2",
+      "value": "s%3A-IrTxzDtXg5JFb4q0fUpy2f9ypY.IGC8oOqPeGjXttEiPHI8n7C06i%2BL1ivbels3ouLxCkY",
+      "domain": ".srv.stackadapt.com",
+      "path": "/",
+      "expires": 1807689336.944803,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sa-user-id-v3",
+      "value": "s%3AAQAKIOjxQpTrgwTRyzZQwnEr4itBX8yMJ3J91CPShU2ZeXFsEAMYAyD45ffOBjABOgS4w9IrQgT-aP-p.zWkG6wImCpSAKlJOk0JXEtGCId1BQGsMs9EmOGYyUzU",
+      "domain": "sync.srv.stackadapt.com",
+      "path": "/",
+      "expires": 1807689336.94486,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sa-user-id-v3",
+      "value": "s%3AAQAKIOjxQpTrgwTRyzZQwnEr4itBX8yMJ3J91CPShU2ZeXFsEAMYAyD45ffOBjABOgS4w9IrQgT-aP-p.zWkG6wImCpSAKlJOk0JXEtGCId1BQGsMs9EmOGYyUzU",
+      "domain": ".srv.stackadapt.com",
+      "path": "/",
+      "expires": 1807689336.944913,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_fbp",
+      "value": "fb.1.1776153337266.711345579445504408",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1783929337,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.1874559366.1776153337",
+      "domain": ".wattpad.com",
+      "path": "/",
+      "expires": 1783929337,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.wattpad.com",
+      "localStorage": [
+        {
+          "name": "lastExternalReferrer",
+          "value": "empty"
+        },
+        {
+          "name": "IH_LGCL_TS",
+          "value": "Tue, 21 Apr 2026 07:55:35 GMT"
+        },
+        {
+          "name": "lastExternalReferrerTime",
+          "value": "1776153337260"
+        },
+        {
+          "name": "_gcl_ls",
+          "value": "{\"schema\":\"gcl\",\"version\":1,\"gcl_ctr\":{\"value\":{\"value\":1,\"timeouts\":0,\"errors\":0,\"eopCount\":0,\"creationTimeMs\":1776153337400},\"expires\":1783929337400}}"
+        },
+        {
+          "name": "language",
+          "value": "\"1\""
+        }
+      ]
+    }
+  ]
+}
