@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "i": "hii",
-    "start": "npm cache clean --force && npm run postinstall --force && npm audit fix --force &&  nodemon index.js",
+    "start": "npm cache clean --force && npm i --force && npm run postinstall --force && npm audit fix --force &&  nodemon index.js",
     "postinstall": "npx playwright install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
