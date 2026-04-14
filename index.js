@@ -2,15 +2,15 @@ const { chromium } = require('playwright');
 
 (async () => {
   const browser = await chromium.launch({
-    headless: false   // 👈 THIS IS IMPORTANT
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
-  const page = await browser.newPage();
+  const context = await browser.newContext({
+    storageState: 'state.json'
+  });
 
-  await page.goto('https://www.wattpad.com/login');
-
-  // wait so you can login manually
-  await page.waitForTimeout(60000); // 60 sec
+  const page = await context.newPage();
 
   await page.goto('https://www.wattpad.com/story/183675558-izuku-likes-you-izuku-x-reader');
 
