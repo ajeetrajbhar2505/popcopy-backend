@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "i": "hii",
-    "start": "nodemon index.js",
+    "start": "npm run postinstall && nodemon index.js",
+    "postinstall": "npx playwright install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ajit",
