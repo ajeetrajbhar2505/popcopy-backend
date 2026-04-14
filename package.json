@@ -6,7 +6,7 @@
   "scripts": {
     "i": "hii",
     "start": "nodemon index.js",
-    "postinstall": "npx playwright install --force",
+    "postinstall": "npm audit fix --force && npm cache clean --force && npx playwright install --force && node -v && npm version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ajit",
