@@ -6,7 +6,7 @@
   "scripts": {
     "i": "hii",
     "start": "npm cache clean --force && npm run postinstall &&  nodemon index.js",
-    "postinstall": "npx playwright install chromium",
+    "postinstall": "npx playwright install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ajit",
