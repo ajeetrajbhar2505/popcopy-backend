@@ -10,9 +10,9 @@ const port = 3000;
 
 // Enable CORS for all routes with preflight support
 app.use(cors({
-    origin: '*'  // This allows requests from any origin
-  }));
-  
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 

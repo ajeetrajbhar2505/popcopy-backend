@@ -1,20 +1,9 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 
-// 🔐 LOGIN CONTROLLER
-exports.login = async (req, res) => {
-  try {
-    const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }); const context = await browser.newContext(); const page = await context.newPage(); await page.goto('https://www.wattpad.com/login');; await page.waitForTimeout(5000); await context.storageState({ path: 'state.json' }); await browser.close(); res.json({ success: true, message: 'Logged in and session saved' });
-
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
-
-
-// 📖 SCRAPE CONTROLLER
 exports.scrapeStory = async (req, res) => {
+  let browser;
+
   try {
     const url = req.query.url;
 
@@ -24,47 +13,77 @@ exports.scrapeStory = async (req, res) => {
       });
     }
 
-    if (!fs.existsSync('state.json')) {
-      return res.status(400).json({
-        error: 'No session found. Run /login first.'
-      });
-    }
-
-    const browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage'
-      ]
+    // ✅ Launch visible browser
+    browser = await chromium.launch({
+      headless: false,
+      channel: 'chrome', // ✅ THIS FIXES GOOGLE BLOCK
+      args: ['--no-sandbox'],
+      slowMo: 50
     });
 
-    const context = await browser.newContext({
-      storageState: 'state.json'
-    });
+    // ✅ Load session if exists
+    const context = fs.existsSync('state.json')
+      ? await browser.newContext({ storageState: 'state.json' })
+      : await browser.newContext();
 
     const page = await context.newPage();
 
-    await page.goto(url, {
-      waitUntil: 'domcontentloaded'
+    // ===============================
+    // 🔐 LOGIN FLOW (ONLY FIRST TIME)
+    // ===============================
+    if (!fs.existsSync('state.json')) {
+      console.log('👉 Opening login page...');
+
+      await page.goto('https://www.wattpad.com/login');
+
+      // 👉 Click Google login button + handle popup
+      const [popup] = await Promise.all([
+        context.waitForEvent('page'),
+        page.click('button.btn-google')
+      ]);
+
+      console.log('👉 Complete Google login in popup...');
+
+      await popup.waitForLoadState();
+
+      // Wait until popup closes (user finishes login)
+      await page.waitForTimeout(60000); // 60 sec
+
+      console.log('✅ Login completed');
+
+      // Save session
+      await context.storageState({ path: 'state.json' });
+      console.log('✅ Session saved!');
+    }
+
+    // ===============================
+    // 📖 SCRAPE STORY
+    // ===============================
+    console.log('📖 Opening story...');
+
+    await page.goto(url, { waitUntil: 'networkidle' });
+
+    // Optional: ensure logged in
+    const isLoggedIn = await page.evaluate(() => {
+      return !document.body.innerText.includes('Log in');
     });
 
-    await page.waitForTimeout(3000);
+    if (!isLoggedIn) {
+      throw new Error('Still not logged in. Delete state.json and try again.');
+    }
 
-    const text = await page.evaluate(() => {
-      return document.body.innerText
-        .replace(/\s+\n/g, '\n')
-        .trim();
-    });
+    // Get HTML
+    const html = await page.content();
 
     await browser.close();
 
-    res.json({
-      success: true,
-      data: text
-    });
+    return res.send(html);
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    if (browser) await browser.close();
+
+    return res.status(500).json({
+      error: err.message
+    });
   }
 };
