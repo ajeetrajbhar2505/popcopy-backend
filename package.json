@@ -4,7 +4,9 @@
   "description": "PopCopy Backend is third party api call only.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "i": "hii",
+    "start": "npm run postinstall &&  nodemon index.js",
+    "postinstall": "npx playwright install --with-deps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ajit",
@@ -20,6 +22,7 @@
     "nodemon": "^3.1.9",
     "npm": "^11.6.1",
     "openai": "^6.2.0",
-    "playwright": "^1.59.1"
+    "playwright": "^1.59.1",
+    "playwright-core": "^1.59.1"
   }
 }
